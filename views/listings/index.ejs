@@ -1,0 +1,101 @@
+<% layout("layouts/boilerplate") %>
+
+
+
+<div class="container-fluid">
+  <div class="index-filter-bar">
+    <div class="filter-carousel">
+      <button class="filter-arrow filter-arrow-left" type="button" aria-label="Show previous filters">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div class="filter-scroll" aria-label="Listing categories">
+        <button class="filter-item active" type="button">
+          <i class="fa-solid fa-fire"></i>
+          <span>Trending</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-bed"></i>
+          <span>Rooms</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-city"></i>
+          <span>Iconic cities</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-mountain-sun"></i>
+          <span>Mountains</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-brands fa-fort-awesome"></i>
+          <span>Castles</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-person-swimming"></i>
+          <span>Amazing pools</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-campground"></i>
+          <span>Camping</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-tractor"></i>
+          <span>Farms</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-snowflake"></i>
+          <span>Arctic</span>
+        </button>
+        <button class="filter-item" type="button">
+          <i class="fa-solid fa-sailboat"></i>
+          <span>Boats</span>
+        </button>
+      </div>
+
+      <button class="filter-arrow filter-arrow-right" type="button" aria-label="Show more filters">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div class="listing-filter-actions">
+      <button class="filter-action-btn" type="button">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Filters</span>
+      </button>
+
+      <label class="tax-toggle" for="taxSwitch">
+        <span>Display total before taxes</span>
+        <input class="tax-toggle-input" type="checkbox" id="taxSwitch">
+        <span class="tax-toggle-slider" aria-hidden="true"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="row g-6">
+
+    <% for(let listing of alllistings){ %>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+      <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+
+        <div class="card h-100 listing-card">
+          <img src="<%= listing.image.url %>" class="card-img-top listing-index-img" alt="Listing_image">
+          <div class="card-img-overlay"></div>
+
+          <div class="card-body">
+            <p class="card-text">
+              <b>
+                <%= listing.title %>
+              </b><br>
+              Rs <%= listing.price.toLocaleString("en-PK") %>/night
+            </p>
+          </div>
+        </div>
+
+      </a>
+    </div>
+
+    <% } %>
+
+  </div>
+</div>
